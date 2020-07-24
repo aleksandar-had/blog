@@ -25,7 +25,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
 
-        if User is None or not user.check_password(form.password.data):
+        if user is None or not user.check_password(form.password.data):
             flash("Invalid username or password")
             return redirect(url_for("login"))
 
@@ -58,4 +58,15 @@ def register():
         flash("You have successfully registered! Thanks for joining!")
         return redirect(url_for("index"))
     return render_template("register.html", title="Register", form=form)
+
+
+@app.route("/user/<username>")
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+        {"author": user, "body": "Test post #1"},
+        {"author": user, "body": "Test post #1"},
+    ]
+    return render_template("user.html", user=user, posts=posts)
 

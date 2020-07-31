@@ -35,7 +35,7 @@ if not app.debug:
             mailhost=(app.config["MAIL_SERVER"], app.config["MAIL_PORT"]),
             fromaddr="no-reply@" + app.config["MAIL_SERVER"],
             toaddrs=app.config["ADMINS"],
-            subject="Microblog Failure",
+            subject="Blog Failure",
             credentials=auth,
             secure=secure,
         )
@@ -45,7 +45,7 @@ if not app.debug:
     if not os.path.exists("logs"):
         os.mkdir("logs")
     file_handler = RotatingFileHandler(
-        "logs/microblog.log", maxBytes=10240, backupCount=10
+        "logs/blog.log", maxBytes=10240, backupCount=10
     )
     file_handler.setFormatter(
         logging.Formatter(
@@ -56,7 +56,7 @@ if not app.debug:
     app.logger.addHandler(file_handler)
 
     app.logger.setLevel(logging.INFO)
-    app.logger.info("Microblog startup")
+    app.logger.info("Blog startup")
 
 
 @babel.localeselector

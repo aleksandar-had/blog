@@ -14,6 +14,8 @@ class UserModelCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app(TestConfig)
         self.app_context = self.app.app_context()
+        # push an application context for the application instance so that
+        # db.create_all() can use current_app.config to know the database loc
         self.app_context.push()
         db.create_all()
 

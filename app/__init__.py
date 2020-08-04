@@ -11,18 +11,6 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
 
-app = Flask(__name__)
-
-from app.errors import bp as errors_bp  # noqa: E402
-from app.auth import bp as auth_bp  # noqa: E402
-from app.main import bp as main_bp  # noqa: E402
-
-app.register_blueprint(errors_bp)
-app.register_blueprint(auth_bp, url_prefix="/auth")
-app.register_blueprint(main_bp)
-
-app.config.from_object(Config)
-
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()

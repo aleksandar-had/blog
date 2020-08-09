@@ -23,7 +23,7 @@ msgid "Please log in to access this page."
 msgstr ""
 
 #: app/email.py:23
-msgid "[Microblog] Reset Your Password"
+msgid "[Blog] Reset Your Password"
 msgstr ""
 
 #: app/forms.py:21 app/forms.py:28 app/forms.py:61

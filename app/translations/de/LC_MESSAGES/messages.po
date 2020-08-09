@@ -23,8 +23,8 @@ msgid "Please log in to access this page."
 msgstr "Bitte anmelden um Zugriff auf diese Seite zu bekommen."
 
 #: app/email.py:23
-msgid "[Microblog] Reset Your Password"
-msgstr "[Microblog] Passwort Zurücksetzen"
+msgid "[Blog] Reset Your Password"
+msgstr "[Blog] Passwort Zurücksetzen"
 
 #: app/forms.py:21 app/forms.py:28 app/forms.py:61
 msgid "Username"

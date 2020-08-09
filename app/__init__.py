@@ -63,7 +63,7 @@ def create_app(config_class=Config):
                 mailhost=(app.config["MAIL_SERVER"], app.config["MAIL_PORT"]),
                 fromaddr="no-reply@" + app.config["MAIL_SERVER"],
                 toaddrs=app.config["ADMINS"],
-                subject="Microblog Failure",
+                subject="Blog Failure",
                 credentials=auth,
                 secure=secure,
             )
@@ -72,7 +72,7 @@ def create_app(config_class=Config):
         if not os.path.exists("logs"):
             os.mkdir("logs")
         file_handler = RotatingFileHandler(
-            "logs/microblog.log", maxBytes=10240, backupCount=10
+            "logs/blog.log", maxBytes=10240, backupCount=10
         )
         file_handler.setFormatter(
             logging.Formatter(
@@ -83,7 +83,7 @@ def create_app(config_class=Config):
         file_handler.setLevel(logging.INFO)
         app.logger.addHandler(file_handler)
         app.logger.setLevel(logging.INFO)
-        app.logger.info("Microblog startup")
+        app.logger.info("Blog startup")
     return app
 
 

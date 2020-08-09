@@ -2,6 +2,7 @@
 app.db
 babel.cfg
 *log.*
+.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

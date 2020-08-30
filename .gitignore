@@ -3,6 +3,7 @@ app.db
 babel.cfg
 *log.*
 .env
+mysql_es_docker_script.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

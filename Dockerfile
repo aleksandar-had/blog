@@ -1,6 +1,7 @@
 FROM python:3.6-alpine
 
 RUN adduser -D blog
+RUN apk add --no-cache --update python3-dev  gcc build-base
 
 WORKDIR /home/blog
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-21 09:18+0200\n"
+"POT-Creation-Date: 2020-09-22 10:07+0200\n"
 "PO-Revision-Date: 2020-07-31 11:33+0200\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -109,59 +109,75 @@ msgstr "Submit"
 msgid "Say something"
 msgstr "Etwas sagen"
 
-#: app/main/forms.py:37 app/main/routes.py:223
+#: app/main/forms.py:37 app/main/routes.py:229
 msgid "Search"
 msgstr ""
 
-#: app/main/routes.py:46
+#: app/main/forms.py:49
+msgid "Message"
+msgstr ""
+
+#: app/main/forms.py:51
+msgid "Send"
+msgstr ""
+
+#: app/main/routes.py:52
 msgid "Your post is now live!"
 msgstr "Ihre Publikation ist jetzt live!"
 
-#: app/main/routes.py:60 app/templates/base.html:21
+#: app/main/routes.py:66 app/templates/base.html:21
 msgid "Home"
 msgstr "Home"
 
-#: app/main/routes.py:87 app/templates/base.html:22
+#: app/main/routes.py:93 app/templates/base.html:22
 msgid "Explore"
 msgstr "Explore"
 
-#: app/main/routes.py:138
+#: app/main/routes.py:144
 msgid "Your changes have been saved."
 msgstr "Ihre Änderungen wurden gespeichert."
 
-#: app/main/routes.py:144 app/templates/edit_profile.html:5
+#: app/main/routes.py:150 app/templates/edit_profile.html:5
 msgid "Edit Profile"
 msgstr "Profil ändern"
 
-#: app/main/routes.py:155 app/main/routes.py:175
+#: app/main/routes.py:161 app/main/routes.py:181
 #, python-format
 msgid "User %(username)s not found."
 msgstr "Benutzer %(username)s nicht gefunden."
 
-#: app/main/routes.py:158
+#: app/main/routes.py:164
 msgid "You cannot follow yourself!"
 msgstr "Sie können nicht sich selbst folgen!"
 
-#: app/main/routes.py:162
+#: app/main/routes.py:168
 #, python-format
 msgid "You are following %(username)s!"
 msgstr "Sie folgen %(username)s!"
 
-#: app/main/routes.py:178
+#: app/main/routes.py:184
 msgid "You cannot unfollow yourself!"
 msgstr "Sie können nicht sich selbst abfolgen!"
 
-#: app/main/routes.py:182
+#: app/main/routes.py:188
 #, python-format
 msgid "You are not following %(username)s."
 msgstr "Sie folgen %(username)s nicht."
 
-#: app/templates/_post.html:14
+#: app/main/routes.py:247
+msgid "Your message has been sent."
+msgstr ""
+
+#: app/main/routes.py:251
+msgid "Send Message"
+msgstr ""
+
+#: app/templates/_post.html:17
 #, python-format
 msgid "%(username)s posted %(when)s"
 msgstr "%(username)s publizierte %(when)s"
 
-#: app/templates/_post.html:25
+#: app/templates/_post.html:28
 msgid "Translate"
 msgstr ""
 
@@ -173,15 +189,19 @@ msgstr "Willkommen zu dem Blog"
 msgid "Login"
 msgstr "Anmelden"
 
-#: app/templates/base.html:35
+#: app/templates/base.html:37 app/templates/messages.html:4
+msgid "Messages"
+msgstr ""
+
+#: app/templates/base.html:40
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/base.html:36
+#: app/templates/base.html:41
 msgid "Logout"
 msgstr "Ausloggen"
 
-#: app/templates/base.html:72
+#: app/templates/base.html:77
 msgid "Error: Could not contact server."
 msgstr ""
 
@@ -190,13 +210,17 @@ msgstr ""
 msgid "Hi, %(username)s!"
 msgstr "Hallo, %(username)s!"
 
-#: app/templates/index.html:17 app/templates/user.html:41
+#: app/templates/index.html:17 app/templates/user.html:53
 msgid "Newer posts"
 msgstr "Neuere Publikationen"
 
-#: app/templates/index.html:22 app/templates/user.html:46
+#: app/templates/index.html:22 app/templates/user.html:58
 msgid "Older posts"
 msgstr "Ältere Publikationen"
+
+#: app/templates/messages.html:12
+msgid "Newer messages"
+msgstr ""
 
 #: app/templates/search.html:4
 msgid "Search Results"
@@ -210,33 +234,42 @@ msgstr ""
 msgid "Next results"
 msgstr ""
 
+#: app/templates/send_message.html:5
+#, python-format
+msgid "Send MEssage to %(recipient)s"
+msgstr ""
+
 #: app/templates/user.html:8
 msgid "User"
 msgstr "Benutzer"
 
-#: app/templates/user.html:11
+#: app/templates/user.html:11 app/templates/user_popup.html:14
 msgid "Last seen on"
 msgstr "Zuletzt gesehen"
 
-#: app/templates/user.html:13
+#: app/templates/user.html:13 app/templates/user_popup.html:17
 #, python-format
 msgid "%(count)d followers"
 msgstr "%(count)d Folger"
 
-#: app/templates/user.html:13
+#: app/templates/user.html:14 app/templates/user_popup.html:18
 #, python-format
 msgid "%(count)d following"
 msgstr "%(count)d following"
 
-#: app/templates/user.html:15
+#: app/templates/user.html:18
+msgid "Send private message"
+msgstr ""
+
+#: app/templates/user.html:24
 msgid "Edit your profile"
 msgstr "Profil ändern"
 
-#: app/templates/user.html:20
+#: app/templates/user.html:31 app/templates/user_popup.html:22
 msgid "Follow"
 msgstr "Folgen"
 
-#: app/templates/user.html:27
+#: app/templates/user.html:39 app/templates/user_popup.html:25
 msgid "Unfollow"
 msgstr "Abfolgen"
 

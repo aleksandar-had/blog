@@ -77,7 +77,7 @@ class User(UserMixin, db.Model):
     # secondary configures the association table for this relationship
     # primaryjoin links the LS entity(follower) with the association table
     # followers.c(olumn).follower_id references the follower_id column
-    # primaryjoin links the RS entity(followed) with the association table
+    # secondaryjoin links the RS entity(followed) with the association table
     # relationship from LS entity - followed, from RS entity - followers
     followed = db.relationship(
         "User",
@@ -87,6 +87,20 @@ class User(UserMixin, db.Model):
         backref=db.backref("followers", lazy="dynamic"),
         lazy="dynamic",
     )
+    messages_sent = db.relationship(
+        "Message",
+        foreign_keys="Message.sender_id",
+        backref="author",
+        lazy="dynamic",
+    )
+
+    messages_received = db.relationship(
+        "Message",
+        foreign_keys="Message.recipient_id",
+        backref="recipient",
+        lazy="dynamic",
+    )
+    last_message_read_time = db.Column(db.DateTime)
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -139,6 +153,25 @@ class User(UserMixin, db.Model):
         except Exception:
             return
         return User.query.get(id)
+
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
+        return (
+            Message.query.filter_by(recipient=self)
+            .filter(Message.timestamp > last_read_time)
+            .count()
+        )
+
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    recipient_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return "<Message {}>".format(self.body)
 
 
 class Post(SearchableMixin, db.Model):

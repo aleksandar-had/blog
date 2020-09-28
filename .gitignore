@@ -5,6 +5,7 @@ babel.cfg
 .env
 mysql_es_docker_script.sh
 dump.rdb
+migrations*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
